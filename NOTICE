@@ -1,0 +1,14 @@
+fleet-dhcpd
+Copyright 2026 zinrai
+
+This product includes software developed at Cybozu, Inc.
+(https://www.cybozu.co.jp/).
+
+DHCP handler code (handler.go, discover.go, request.go, decline.go,
+release.go, inform.go, interface.go, errors.go) is adapted from
+sabakan (https://github.com/cybozu-go/sabakan), licensed under the
+Apache License, Version 2.0.
+
+Lease usage tracking logic in consul_store.go is adapted from
+sabakan's models/etcd/dhcp.go, licensed under the Apache License,
+Version 2.0.

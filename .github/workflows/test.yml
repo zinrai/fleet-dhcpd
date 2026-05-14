@@ -1,0 +1,39 @@
+name: test
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+      - uses: actions/setup-go@41dfa10bad2bb2ae585af6ee5bb4d7d973ad74ed # v5.1.0
+        with:
+          go-version-file: go.mod
+
+      - name: Install Consul
+        run: |
+          curl -fsSL -o /tmp/consul.zip https://releases.hashicorp.com/consul/1.22.7/consul_1.22.7_linux_amd64.zip
+          unzip -o /tmp/consul.zip -d /tmp
+          sudo mv /tmp/consul /usr/local/bin/consul
+          consul version
+
+      - name: Start Consul dev agent
+        run: |
+          consul agent -dev -client=127.0.0.1 > /tmp/consul.log 2>&1 &
+          for i in $(seq 1 20); do
+            if consul members > /dev/null 2>&1; then
+              echo "Consul ready"
+              exit 0
+            fi
+            sleep 1
+          done
+          echo "Consul did not become ready in time" >&2
+          cat /tmp/consul.log >&2
+          exit 1
+
+      - run: go vet ./...
+      - run: go test -v ./...
+      - run: go build .

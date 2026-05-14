@@ -1,0 +1,11 @@
+{
+  "subnet": "192.168.10.0/24",
+  "range_start": "192.168.10.100",
+  "range_end": "192.168.10.200",
+  "router": "192.168.10.1",
+  "dns": ["1.1.1.1", "8.8.8.8"],
+  "domain_name": "lab.local",
+  "lease_time": "1h",
+  "boot_url": "http://boot.example.com/ipxe.boot",
+  "webhook_url": ""
+}
