@@ -14,6 +14,29 @@ key-value store, with no instance-level state. The DHCP handler in
 `internal/dhcp/` is adapted from sabakan's `dhcpd/` package. Lease state
 is shared through Consul KV (sabakan uses etcd).
 
+```mermaid
+flowchart LR
+    Client[DHCP client]
+
+    subgraph Fleet["fleet-dhcpd cluster"]
+        D1[fleet-dhcpd]
+        D2[fleet-dhcpd]
+        D3[fleet-dhcpd]
+    end
+
+    subgraph Consul["Consul cluster"]
+        KV[(KV store)]
+    end
+
+    Client -. broadcast .-> D1
+    Client -. broadcast .-> D2
+    Client -. broadcast .-> D3
+
+    D1 <--> KV
+    D2 <--> KV
+    D3 <--> KV
+```
+
 [sabakan]: https://github.com/cybozu-go/sabakan
 
 ## Scope
