@@ -3,7 +3,7 @@ module github.com/zinrai/fleet-dhcpd
 go 1.26.3
 
 require (
-	github.com/hashicorp/consul/api v1.34.2
+	github.com/hashicorp/consul/api v1.34.3
 	go.universe.tf/netboot v0.0.0-20260201190555-f5d248c4db46
 	golang.org/x/sync v0.20.0
 )
