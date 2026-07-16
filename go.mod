@@ -5,7 +5,7 @@ go 1.26.3
 require (
 	github.com/hashicorp/consul/api v1.34.4
 	go.universe.tf/netboot v0.0.0-20260201190555-f5d248c4db46
-	golang.org/x/sync v0.21.0
+	golang.org/x/sync v0.22.0
 )
 
 require (
