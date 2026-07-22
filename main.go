@@ -31,7 +31,13 @@ func run() error {
 	kvPrefix := flag.String("kv-prefix", "", "Consul KV prefix containing config and leases (required)")
 	ifname := flag.String("interface", "", "network interface to listen on (required)")
 	listenAddr := flag.String("listen", "0.0.0.0:67", "address to bind for DHCP")
+	showVersion := flag.Bool("version", false, "Print version information and exit")
 	flag.Parse()
+
+	if *showVersion {
+		printVersion()
+		os.Exit(0)
+	}
 
 	if *kvPrefix == "" {
 		return fmt.Errorf("-kv-prefix is required")
