@@ -1,9 +1,9 @@
 module github.com/zinrai/fleet-dhcpd
 
-go 1.26.3
+go 1.26.7
 
 require (
-	github.com/hashicorp/consul/api v1.34.4
+	github.com/hashicorp/consul/api v1.34.5
 	go.universe.tf/netboot v0.0.0-20260201190555-f5d248c4db46
 	golang.org/x/sync v0.23.0
 )
@@ -25,6 +25,6 @@ require (
 	github.com/mattn/go-isatty v0.0.22 // indirect
 	github.com/mitchellh/go-homedir v1.1.0 // indirect
 	golang.org/x/exp v0.0.0-20260218203240-3dfff04db8fa // indirect
-	golang.org/x/net v0.56.0 // indirect
-	golang.org/x/sys v0.46.0 // indirect
+	golang.org/x/net v0.59.0 // indirect
+	golang.org/x/sys v0.48.0 // indirect
 )
